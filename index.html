@@ -113,6 +113,8 @@
     .id-field {
       margin-bottom: 12px;
       font-size: 13px;
+      display: flex;
+      align-items: center;
     }
 
     .id-field label {
@@ -124,6 +126,29 @@
 
     .id-field span {
       color: #ffffff;
+    }
+
+    .id-input {
+      flex: 1;
+      background: rgba(26, 26, 26, 0.8);
+      border: 1px solid rgba(147, 51, 234, 0.3);
+      color: #ffffff;
+      padding: 6px 10px;
+      font-size: 13px;
+      border-radius: 3px;
+      font-family: 'Noto Sans KR', sans-serif;
+      transition: all 0.3s;
+    }
+
+    .id-input:focus {
+      outline: none;
+      border-color: #9333ea;
+      box-shadow: 0 0 10px rgba(147, 51, 234, 0.4);
+      background: rgba(26, 26, 26, 0.95);
+    }
+
+    .id-input::placeholder {
+      color: #666;
     }
 
     .input-group {
@@ -610,19 +635,29 @@
         <div class="id-card-header">STUDENT IDENTIFICATION</div>
         <div class="id-field">
           <label>NAME:</label>
-          <span>███████</span>
+          <input type="text" class="id-input" id="nameInput" placeholder="이름" maxlength="10">
         </div>
         <div class="id-field">
           <label>GRADE:</label>
-          <span>2학년</span>
+          <select class="id-input" id="gradeInput">
+            <option value="">선택</option>
+            <option value="1학년">1학년</option>
+            <option value="2학년">2학년</option>
+            <option value="3학년">3학년</option>
+          </select>
         </div>
         <div class="id-field">
           <label>DEPT:</label>
-          <span>미술과</span>
+          <select class="id-input" id="deptInput">
+            <option value="">선택</option>
+            <option value="미술과">미술과</option>
+            <option value="음악과">음악과</option>
+            <option value="연극영화과">연극영화과</option>
+          </select>
         </div>
         <div class="id-field">
           <label>ID:</label>
-          <span>24-A-███</span>
+          <input type="text" class="id-input" id="idInput" placeholder="학번" maxlength="8">
         </div>
       </div>
 
@@ -1187,7 +1222,7 @@
     function checkPassword() {
       const input = document.getElementById('passwordInput');
       const errorMsg = document.getElementById('errorMsg');
-      const correctPassword = 'ARCHIVE2024'; // 암호: ARCHIVE2024
+      const correctPassword = 'ARCHIVE'; // 암호: ARCHIVE
       
       if (input.value === correctPassword) {
         document.getElementById('loginScreen').classList.add('hidden');
